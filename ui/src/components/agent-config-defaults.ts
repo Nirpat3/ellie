@@ -1,7 +1,7 @@
 import type { CreateConfigValues } from "@paperclipai/adapter-utils";
 
 export const defaultCreateValues: CreateConfigValues = {
-  adapterType: "claude_local",
+  adapterType: "openclaw_gateway",
   cwd: "",
   instructionsFilePath: "",
   promptTemplate: "",
@@ -16,7 +16,7 @@ export const defaultCreateValues: CreateConfigValues = {
   extraArgs: "",
   envVars: "",
   envBindings: {},
-  url: "",
+  url: "ws://127.0.0.1:18789",
   bootstrapPrompt: "",
   payloadTemplateJson: "",
   workspaceStrategyType: "project_primary",

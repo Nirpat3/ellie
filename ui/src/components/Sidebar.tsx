@@ -9,6 +9,10 @@ import {
   SquarePen,
   Network,
   Settings,
+  Brain,
+  Activity,
+  Mail,
+  Users,
 } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { SidebarSection } from "./SidebarSection";
@@ -21,6 +25,7 @@ import { heartbeatsApi } from "../api/heartbeats";
 import { queryKeys } from "../lib/queryKeys";
 import { useInboxBadge } from "../hooks/useInboxBadge";
 import { Button } from "@/components/ui/button";
+import { SystemStatusDot } from "./SystemStatusDot";
 
 export function Sidebar() {
   const { openNewIssue } = useDialog();
@@ -51,6 +56,7 @@ export function Sidebar() {
         <span className="flex-1 text-sm font-bold text-foreground truncate pl-1">
           {selectedCompany?.name ?? "Select company"}
         </span>
+        <SystemStatusDot />
         <Button
           variant="ghost"
           size="icon-sm"
@@ -91,9 +97,19 @@ export function Sidebar() {
 
         <SidebarAgents />
 
+        <SidebarSection label="Shre Intelligence">
+          <SidebarNavItem to="/skills" label="Skills" icon={Brain} />
+          <SidebarNavItem to="/costs" label="AI Costs" icon={DollarSign} />
+          <SidebarNavItem to="/status" label="System Status" icon={Activity} />
+        </SidebarSection>
+
+        <SidebarSection label="Operations">
+          <SidebarNavItem to="/email" label="Email" icon={Mail} />
+          <SidebarNavItem to="/contacts" label="Contacts" icon={Users} />
+        </SidebarSection>
+
         <SidebarSection label="Company">
           <SidebarNavItem to="/org" label="Org" icon={Network} />
-          <SidebarNavItem to="/costs" label="Costs" icon={DollarSign} />
           <SidebarNavItem to="/activity" label="Activity" icon={History} />
           <SidebarNavItem to="/company/settings" label="Settings" icon={Settings} />
         </SidebarSection>
